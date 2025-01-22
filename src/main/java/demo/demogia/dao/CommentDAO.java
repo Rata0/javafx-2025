@@ -34,7 +34,7 @@ public class CommentDAO {
             if (generatedKeys.next()) {
                 comment.setCommentID(generatedKeys.getInt(1));
             } else {
-                throw new SQLException("DB не вернули идентификатор после сохранения сущности");
+                throw new SQLException("DB не вернули идентификатор после сохранения сущности коммент");
             }
         }
     }
@@ -82,10 +82,10 @@ public class CommentDAO {
 
             int countUpdate = preparedStatement.executeUpdate();
             if (countUpdate == 0) {
-                throw new SQLException("Пользовательс с id " + comment.getCommentID() + " не выполнилось");
+                throw new SQLException("Комментарий с id " + comment.getCommentID() + " не выполнилось");
             }
         } catch (SQLException e) {
-            throw new SQLException("Ошибка при обновление сущности: " + e.getMessage());
+            throw new SQLException("Ошибка при обновление сущности коммент: " + e.getMessage());
         }
     }
 }

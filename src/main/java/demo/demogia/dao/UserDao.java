@@ -34,7 +34,7 @@ public class UserDao {
             if (generatedKeys.next()) {
                 user.setUserID(generatedKeys.getInt(1));
             } else {
-                throw new SQLException("DB не вернули идентификатор после сохранения сущности");
+                throw new SQLException("DB не вернули идентификатор после сохранения сущности пользователь");
             }
         }
     }
@@ -91,7 +91,7 @@ public class UserDao {
                 throw new SQLException("Пользовательс с id " + user.getUserID() + " не выполнилось");
             }
         } catch (SQLException e) {
-            throw new SQLException("Ошибка при обновление сущности: " + e.getMessage());
+            throw new SQLException("Ошибка при обновление сущности пользователь: " + e.getMessage());
         }
     }
 }

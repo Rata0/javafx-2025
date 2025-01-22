@@ -45,7 +45,7 @@ public class RequestDAO {
             if (generatedKeys.next()) {
                 request.setRequestID(generatedKeys.getInt(1));
             } else {
-                throw new SQLException("DB не вернули идентификатор после сохранения сущности");
+                throw new SQLException("DB не вернули идентификатор после сохранения сущности запрос");
             }
         }
     }
@@ -128,7 +128,7 @@ public class RequestDAO {
                 throw new SQLException("Запро с id " + request.getRequestID() + " не выполнилось");
             }
         } catch (SQLException e) {
-            throw new SQLException("Ошибка при обновление сущности: " + e.getMessage());
+            throw new SQLException("Ошибка при обновление сущности запрос: " + e.getMessage());
         }
     }
 }

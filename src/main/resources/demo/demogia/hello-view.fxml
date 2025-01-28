@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="demo.demogia.HelloController">
+<VBox alignment="CENTER" prefHeight="323.0" prefWidth="898.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo.demogia.HelloController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+   <TableView fx:id="tView" prefHeight="200.0" prefWidth="200.0">
+     <columns>
+         <TableColumn fx:id="reqId" prefWidth="75.0" text="requestID" />
+         <TableColumn fx:id="startDate" prefWidth="109.33330535888672" text="startDate" />
+         <TableColumn fx:id="orgType" prefWidth="84.66670227050781" text="orgTechType" />
+         <TableColumn fx:id="orgModel" prefWidth="84.0" text="orgTechModel" />
+         <TableColumn fx:id="problemDesc" prefWidth="104.0" text="problemDescryption" />
+         <TableColumn minWidth="0.0" prefWidth="0.0" text="Column X" />
+         <TableColumn fx:id="reqStatus" prefWidth="99.0" text="requestStatus" />
+         <TableColumn fx:id="compDate" prefWidth="110.3333740234375" text="completionDate" />
+         <TableColumn fx:id="repaierParts" prefWidth="75.0" text="repairParts" />
+         <TableColumn fx:id="masterId" prefWidth="75.0" text="masterID" />
+         <TableColumn fx:id="clientId" prefWidth="75.0" text="clientID" />
+     </columns>
+   </TableView>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Label fx:id="welcomeText" />
+    <Button onAction="#onHelloButtonClick" text="Hello!" />
 </VBox>

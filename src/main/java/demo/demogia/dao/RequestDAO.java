@@ -28,7 +28,7 @@ public class RequestDAO {
             preparedStatement.setDate(1, new java.sql.Date(request.getStartDate().getTime()));
             preparedStatement.setString(2, request.getOrgTechType());
             preparedStatement.setString(3, request.getOrgTechModel());
-            preparedStatement.setString(4, request.getProblemDescription());
+            preparedStatement.setString(4, request.getProblemDescryption());
             preparedStatement.setString(5, request.getRequestStatus());
 
             if (request.getCompletionDate() != null) {
@@ -58,6 +58,7 @@ public class RequestDAO {
                 int id = resultSet.getInt("requestID");
                 String orgTechType = resultSet.getString("orgTechType");
                 String orgTechModel = resultSet.getString("orgTechModel");
+                Date startDate = resultSet.getDate("startDate");
                 String problemDescription = resultSet.getString("problemDescryption");
                 String requestStatus = resultSet.getString("requestStatus");
                 Date completionDate = resultSet.getDate("completionDate");
@@ -68,6 +69,7 @@ public class RequestDAO {
                 Request request = new Request(orgTechType, orgTechModel, problemDescription, masterID, clientID);
 
                 request.setRequestID(id);
+                request.setStartDate(startDate);
                 request.setCompletionDate(completionDate);
                 request.setRepairParts(repairParts);
                 request.setRequestStatus(requestStatus);
@@ -109,7 +111,7 @@ public class RequestDAO {
             preparedStatement.setDate(1, new java.sql.Date(request.getStartDate().getTime()));
             preparedStatement.setString(2, request.getOrgTechType());
             preparedStatement.setString(3, request.getOrgTechModel());
-            preparedStatement.setString(4, request.getProblemDescription());
+            preparedStatement.setString(4, request.getProblemDescryption());
             preparedStatement.setString(5, request.getRequestStatus());
 
             if (request.getCompletionDate() != null) {

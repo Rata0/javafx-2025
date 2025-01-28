@@ -15,6 +15,8 @@ public class Request {
     private int masterID;
     private int clientID;
 
+    public Request() {}
+
     public Request(String orgTechType, String orgTechModel, String problemDescription, int masterID, int clientID) {
         this.startDate = new Date();
         this.orgTechType = orgTechType;
@@ -37,16 +39,32 @@ public class Request {
         return startDate;
     }
 
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
     public String getOrgTechType() {
         return orgTechType;
+    }
+
+    public void setOrgTechType(String orgTechType) {
+        this.orgTechType = orgTechType;
     }
 
     public String getOrgTechModel() {
         return orgTechModel;
     }
 
-    public String getProblemDescription() {
+    public void setOrgTechModel(String orgTechModel) {
+        this.orgTechModel = orgTechModel;
+    }
+
+    public String getProblemDescryption() {
         return problemDescryption;
+    }
+
+    public void setProblemDescryption(String problemDescryption) {
+        this.problemDescryption = problemDescryption;
     }
 
     public String getRequestStatus() {

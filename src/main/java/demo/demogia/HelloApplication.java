@@ -1,5 +1,7 @@
 package demo.demogia;
 
+import demo.demogia.dao.RequestDAO;
+import demo.demogia.model.Request;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,7 +23,7 @@ public class HelloApplication extends Application {
         initTables();
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 950, 800);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
@@ -49,8 +51,8 @@ public class HelloApplication extends Application {
                 + "requestStatus VARCHAR(255) NOT NULL,"
                 + "completionDate DATE,"
                 + "repairParts TEXT,"
-                + "masterID INTEGER REFERENCES users(userID),"
-                + "clientID INTEGER REFERENCES users(userID)"
+                + "masterID INTEGER,"
+                + "clientID INTEGER"
                 + ");";
 
         String createCommentsTable = "CREATE TABLE IF NOT EXISTS Comments ("
@@ -59,6 +61,13 @@ public class HelloApplication extends Application {
                 + "masterID INTEGER REFERENCES Users(userID),"
                 + "requestID INTEGER REFERENCES Requests(requestID)"
                 + ");";
+
+        String insertRequests = "INSERT INTO requests (startDate, orgTechType, orgTechModel, problemDescryption, requestStatus, completionDate, repairParts, masterID, clientID) VALUES "
+                + "('2023-06-06', 'Компьютер', 'DEXP Aquilon O286', 'Перестал работать', 'В процессе ремонта', NULL, NULL, 2, 7), "
+                + "('2023-05-05', 'Компьютер', 'DEXP Atlas H388', 'Перестал работать', 'В процессе ремонта', NULL, NULL, 3, 8), "
+                + "('2022-07-07', 'Ноутбук', 'MSI GF76 Katana 11UC-879XRU черный', 'Выключается', 'Готова к выдаче', '2023-01-01', NULL, 3, 9), "
+                + "('2023-08-02', 'Ноутбук', 'MSI Modern 15 B12M-211RU черный', 'Выключается', 'Новая заявка', NULL, NULL, NULL, 8), "
+                + "('2023-08-02', 'Принтер', 'HP LaserJet Pro M404dn', 'Перестала включаться', 'Новая заявка', NULL, NULL, NULL, 9);";
 
         try (Statement statement = databaseConnection.getConnection().createStatement()) {
             statement.execute(createUsersTable);
@@ -69,6 +78,9 @@ public class HelloApplication extends Application {
 
             statement.execute(createCommentsTable);
             System.out.println("Таблица comments создана");
+
+            statement.execute(insertRequests);
+            System.out.println("Данные вставлены");
         } catch (SQLException e) {
             e.printStackTrace();
         }
